@@ -54,4 +54,71 @@ function Camper() {
   );
 }
 
+// function Camper() {
+//   const [{ data: camper, error, status }, setCamper] = useState({
+//     data: null,
+//     error: null,
+//     status: "pending",
+//   });
+//   const { id } = useParams();
+
+//   useEffect(() => {
+//     fetch(`/campers/${id}`).then((r) => {
+//       if (r.ok) {
+//         r.json().then((camper) =>
+//           setCamper({ data: camper, error: null, status: "resolved" })
+//         );
+//       } else {
+//         r.json().then((err) =>
+//           setCamper({ data: null, error: err.error, status: "rejected" })
+//         );
+//       }
+//     });
+//   }, [id]);
+
+//   function handleAddActivity(newActivity) {
+//     setCamper((prevCamper) => {
+//       if (!prevCamper.data || !prevCamper.data.activities) {
+//         // If the data or activities array doesn't exist, initialize them
+//         return {
+//           error: prevCamper.error,
+//           status: prevCamper.status,
+//           data: {
+//             ...prevCamper.data,
+//             activities: [newActivity],
+//           },
+//         };
+//       } else {
+//         // If the activities array exists, add the new activity
+//         return {
+//           error: prevCamper.error,
+//           status: prevCamper.status,
+//           data: {
+//             ...prevCamper.data,
+//             activities: [...prevCamper.data.activities, newActivity],
+//           },
+//         };
+//       }
+//     });
+//   }
+
+//   if (status === "pending") return <h2>Loading...</h2>;
+//   if (status === "rejected") return <h2>Error: {error}</h2>;
+
+//   return (
+//     <div>
+//       <h2>{camper.name}'s Activities</h2>
+//       <ul>
+//         {camper.activities.map((activity) => (
+//           <li key={activity.id}>
+//             {activity.name} | Difficulty: {activity.difficulty}
+//           </li>
+//         ))}
+//       </ul>
+//       <hr />
+//       <NewSignup onAddActivity={handleAddActivity} camperId={camper.id} />
+//     </div>
+//   );
+// }
+
 export default Camper;
